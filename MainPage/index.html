@@ -52,10 +52,20 @@
 	var lightdata;
 	var tempdata;
 	var celsius;
-	setup();
+
+	// cpf setup
+	function setup()
+	{
+		if(cpf)
+			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1]'); 
+			//document.getElementById("demo").innerHTML += ret + "<br>";
+	}
+	
 	// Analog
-	function loop() {
-		if(cpf){
+	function loop() 
+	{
+		if(cpf)
+		{
 	
 			lightdata = cpf.get("light sensor");
 			tempdata = cpf.get("temperature sensor");
@@ -65,11 +75,11 @@
 			
 		}
 		setTimeout(loop, 1000);
-	}
-	loop();
+	}	
 	
 	// RGB
-	function changeColor() {
+	function changeColor() 
+	{
 		var Rled = document.getElementById("rled").value;
 		var Gled = document.getElementById("gled").value;
 		var Bled = document.getElementById("bled").value;
@@ -80,26 +90,25 @@
 		
 		document.getElementById("showcolor").style.backgroundColor = 'rgb(' + Rled + ',' + Gled + ',' + Bled + ')';
 		
-		if(cpf){
+		if(cpf)
+		{
 			cpf.setChainableLed("0," + Rled + "," + Gled + "," + Bled + ";");
 		}
 		
 	}
 	
 	// Temperature
-	function toCelsius(value) {
+	function toCelsius(value) 
+	{
 		var resistance = parseFloat((1023-value) * 10000 / value);
 		var temperature = 1 / (Math.log(resistance / 10000) / 3975+1 / 298.15) - 273.15;
 		
 		return temperature.toFixed(2);
-	}
-	
-	// cpf setup
-	function setup(){
-		if(cpf)
-			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1]'); 
-			//document.getElementById("demo").innerHTML += ret + "<br>";
-	}
+	}	
+
+	setup();
+
+	loop();
 	
 </script>
 </body>
