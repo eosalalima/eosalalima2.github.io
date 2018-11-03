@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <title>Easy Control</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <font id="title">Servo Test</font><p><br>
+
+    <div id="content" class="row">
+        
+    </div>
+
+    <script>	
+        // cpf setup
+        function setup()
+        {
+            if(cpf)
+            {
+                cpf.setPinMode('["resetPin"], ["servo_init", 4, 90, 900, 2100]'); 			
+            }			
+        }
+        
+        function loop() 
+        {
+            if(cpf)
+            {			
+                cpf.request('["servo_pos", 4, 90]');
+            }
+            setTimeout("loop()", 1000);
+        }		
+
+        setup();
+
+        loop();        
+    </script>
+</body>
+</html>
