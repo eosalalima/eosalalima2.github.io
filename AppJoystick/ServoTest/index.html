@@ -21,16 +21,21 @@
             if(cpf)
             {
                 cpf.setPinMode('["resetPin"], ["servo_init", 4, 90, 900, 2100]'); 			
-            }			
+            }	
+
+            setInterval(loop, 1000);
         }
         
         function loop() 
         {
             if(cpf)
-            {			
-                cpf.request('["servo_pos", 4, 90]');
-            }
-            setTimeout("loop()", 1000);
+            {		
+                // Fast servo...	
+                cpf.request('["servo_pos", 8, 60]');
+
+                // Stop servo...
+                // cpf.request('["servo_pos", 4, 90]');
+            }            
         }		
 
         setup();
