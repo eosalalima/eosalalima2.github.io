@@ -37,7 +37,11 @@
 				if (button == 1)
 				{
 					cpf.request('["digitalWrite", 8, 1]');				
-				}                
+				} 
+				else
+				{
+					cpf.request('["digitalWrite", 8, 0]');				
+				}               
 
                 // Fast servo...	
                 // cpf.request('["servo_pos", 8, 60]');
