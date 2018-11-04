@@ -21,9 +21,7 @@
             if(cpf)
             {
                 // cpf.setPinMode('["resetPin"], ["servo_init", 8, 90, 900, 2100]'); 			
-                cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 8, "SERVO"]'); 			
-
-				alert("Setup");
+                cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 8, "OUTPUT"]'); 							
             }	            
         }
         
@@ -31,9 +29,7 @@
         {
             if(cpf)
             {		
-                cpf.request('["analogWrite", 8, 180]');
-
-				alert("Setup");
+                cpf.request('["digitalWrite", 8, 1]');				
 
                 // Fast servo...	
                 // cpf.request('["servo_pos", 8, 60]');
