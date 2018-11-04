@@ -30,7 +30,7 @@
         {
             if(cpf)
             {
-                
+                cpf.etPinMode('["resetPin"],["grove_newChainableLED", 7, 8, 3]');
             }	            
         }
         
@@ -38,11 +38,10 @@
         {
             if(cpf)
             {		
-				
+				cpf.request('["grove_setColorRGB", 0, 255, 0, 0]');
             }   
             setTimeout(loop, 1000);         
         }		
-
 		
 
         setup();
