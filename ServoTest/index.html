@@ -14,31 +14,35 @@
         
     </div>
 
-<script>	
-
-	// cpf setup
-	function setup()
-	{
-		if(cpf)
+    <script>	
+        // cpf setup
+        function setup()
         {
-            cpf.setPinMode('["resetPin"], ["servo_init", 4, 90, 900, 2100]'); 			
-        }			
-	}
-	
-	// Analog
-	function loop() 
-	{
-		if(cpf)
-		{			
-            cpf.request('["servo_pos", 4, 90]');
-		}
-		setTimeout(loop, 1000);
-	}		
+            if(cpf)
+            {
+                // cpf.setPinMode('["resetPin"], ["servo_init", 8, 90, 900, 2100]'); 			
+                cpf.setPinMode('["resetPin"], ["setPinMode", "digital", 9, "SERVO"]'); 			
+            }	            
+        }
+        
+        function loop() 
+        {
+            if(cpf)
+            {		
+                cpf.request('["analogWrite", 9, 180]');
 
-	setup();
+                // Fast servo...	
+                // cpf.request('["servo_pos", 8, 60]');
 
-	loop();
-	
-</script>
+                // Stop servo...
+                // cpf.request('["servo_pos", 4, 90]');
+            }   
+            setTimeout(loop, 1000);         
+        }		
+
+        setup();
+
+        loop();        
+    </script>
 </body>
 </html>
