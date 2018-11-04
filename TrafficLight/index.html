@@ -36,7 +36,7 @@
         
         function loop() 
         {
-            setTimeout(go, 20000);          // Wait 20 secs then turn-on Go light                     
+            setTimeout(go, 5000);          // Wait 20 secs then turn-on Go light                     
         }		
 
         function go()
@@ -47,7 +47,7 @@
 				cpf.request('["grove_setColorRGB", 2, 0, 255, 0]');     // Turn-on Go light
                 setUiLight("green");
 
-                setTimeout(warning, 15000);     // Wait 15 secs then turn-on Warning light
+                setTimeout(warning, 5000);     // Wait 15 secs then turn-on Warning light
             }  
         }
 
@@ -59,7 +59,7 @@
 				cpf.request('["grove_setColorRGB", 1, 255, 255, 0]');   // Turn-on Warning light
                 setUiLight("yellow");
 
-                setTimeout(stop, 2000);         // Wait 2 secs then turn-on Stop light
+                setTimeout(stop, 1000);         // Wait 2 secs then turn-on Stop light
             }
         }
 
