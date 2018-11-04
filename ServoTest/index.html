@@ -11,7 +11,8 @@
     <font id="title">Servo App</font><p><br>
 
     <div id="content" class="row">
-        
+		<button type="button" class="btn btn-primary" onclick="switch_fan_on()">Primary</button>
+		<button type="button" class="btn btn-success" onclick="switch_fan_off()">Success</button>
     </div>
 
     <script>	
@@ -51,6 +52,16 @@
             }   
             setTimeout(loop, 1000);         
         }		
+
+		function switch_fan_on()
+		{
+			cpf.request('["digitalWrite", 8, 1]');
+		}
+
+		function switch_fan_off()
+		{
+			cpf.request('["digitalWrite", 8, 0]');
+		}
 
         setup();
 
