@@ -36,13 +36,48 @@
         
         function loop() 
         {
+            setTimeout(go, 20000);          // Wait 20 secs then turn-on Go light
+            setTimeout(warning, 15000);     // Wait 15 secs then turn-on Warning light
+            setTimeout(stop, 2000);         // Wait 2 secs then turn-on Stop light
+
+            setTimeout(loop, 1);         
+        }		
+
+        function go()
+        {
             if(cpf)
             {		
-				cpf.request('["grove_setColorRGB", 0, 255, 0, 0]');
-            }   
-            setTimeout(loop, 1000);         
+                cpf.request('["grove_setColorRGB", 0, 0, 0, 0]');       // Turn-off Stop light
+				cpf.request('["grove_setColorRGB", 2, 0, 255, 0]');     // Turn-on Go light
+                setUiLight("green");
+            }  
+        }
+
+        function warning()
+        {
+            if(cpf)
+            {	
+                cpf.request('["grove_setColorRGB", 2, 0, 0, 0]');	    // Turn-off Go light
+				cpf.request('["grove_setColorRGB", 1, 255, 255, 0]');   // Turn-on Warning light
+                setUiLight("yellow");
+            }
+        }
+
+        function stop()
+        {
+            if(cpf)
+            {	
+                cpf.request('["grove_setColorRGB", 1, 0, 0, 0]');	    // Turn-off Warning light
+				cpf.request('["grove_setColorRGB", 0, 255, 0, 0]');     // Turn-on Stop light
+                setUiLight("red");
+            }
         }		
-		
+
+        function setUiLight(color)
+        {
+            var traffic_light = document.getElementById("traffic_light");
+            traffic_light.src = "images/" + color + ".png";
+        }
 
         setup();
 
